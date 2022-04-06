@@ -11,7 +11,7 @@ using namespace std;
 
 #define THREAD_NUM 2
 
-sem_t semEmpty;
+//sem_t semEmpty;
 sem_t semFull;
 
 pthread_mutex_t mutexBuffer;
@@ -26,7 +26,7 @@ void* producer(void* args) {
         sleep(1);
 
         // Add to the buffer
-        sem_wait(&semEmpty);
+        //sem_wait(&semEmpty);
         pthread_mutex_lock(&mutexBuffer);
         buffer[count] = x;
         cout << "Produced: " << buffer[count] << endl;
@@ -46,7 +46,7 @@ void* consumer(void* args) {
         y = buffer[count - 1];
         count--;
         pthread_mutex_unlock(&mutexBuffer);
-        sem_post(&semEmpty);
+        //sem_post(&semEmpty);
 
         // Consume
         cout << "Consumed: " << y << endl;
@@ -58,8 +58,8 @@ int main(int argc, char* argv[]) {
     srand(time(NULL));
     pthread_t th[THREAD_NUM];
     pthread_mutex_init(&mutexBuffer, NULL);
-    sem_init(&semEmpty, 0, 10);
-    sem_init(&semFull, 0, 0);
+    sem_init(&semEmpty, 0, 2);
+    //sem_init(&semFull, 0, 0);
     int i;
     for (i = 0; i < THREAD_NUM; i++) {
         if (i > 0) {
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
             perror("Failed to join thread");
         }
     }
-    sem_destroy(&semEmpty);
+    //sem_destroy(&semEmpty);
     sem_destroy(&semFull);
     pthread_mutex_destroy(&mutexBuffer);
     return 0;
