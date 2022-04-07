@@ -67,8 +67,6 @@ int main(){
         std::cout << "Produced: " << shmp->data[shmp->count] << std::endl;
         shmp->count++;
         
-        std::cout << "PRODUCER: Count = " << shmp->count << std::endl;
-
         sem_post(&shmp->S); //Signal
         sem_post(&shmp->semFull); //1 more full
 

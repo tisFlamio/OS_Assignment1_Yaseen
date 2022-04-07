@@ -1,0 +1,22 @@
+user@user-VirtualBox:~/Documents/OS_Assignment1_Yaseen$ g++ producer.cpp -pthread -lrt -o producer
+user@user-VirtualBox:~/Documents/OS_Assignment1_Yaseen$ g++ consumer.cpp -pthread -lrt -o consumer
+user@user-VirtualBox:~/Documents/OS_Assignment1_Yaseen$ ./consumer  & ./producer
+[1] 39777
+Produced: 11
+Produced: 11
+Consumer: Buffer content is 11 11 
+Consumed: 11
+Produced: 39
+Consumer: Buffer content is 11 39 
+Consumed: 39
+Produced: 39
+Consumer: Buffer content is 11 39 
+Consumed: 39
+Produced: 39
+Consumer: Buffer content is 11 39 
+Consumed: 39
+Produced: 39
+Consumer: Buffer content is 11 39 
+Consumed: 39
+Consumer: Buffer content is 11 0 
+Consumed: 11

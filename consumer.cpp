@@ -44,8 +44,6 @@ int main(){
         shmp->data[shmp->count] = 0; //RESET (effectively remove from buffer)
         std::cout << '\n';
         std::cout << "Consumed: " << Y << std::endl;
-        std::cout << "CONSUMER: Count = " << shmp->count << std::endl;
-
 
 
         
