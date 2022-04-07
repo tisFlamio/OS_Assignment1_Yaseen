@@ -10,6 +10,8 @@ The first method is in 1 file, main.cpp. It continues to produce and consume ran
 
 The second implementation uses 3 files. The header file is structure.hpp, in which the include directives are kept, as well as the definition of buffer, our structure, which stores 3 semaphores, a counter integer, and a static array of size 2. The producer file is producer.cpp, which creates a shared memory instance of buffer and fills the buffer. The consumer file is consumer.cpp which uses and empties the buffer. In this example emptying is represented as setting the values to 0.  
 
+Additional note: an example of compilation and output can be found in the file example.txt
+
 # Dependencies
 This code utilizes pthreads and was creating in a Linux environment, so you may need to use a Linux environment to execute the code.
 In addition, g++ was used in the production of this code and is therefore required. 
