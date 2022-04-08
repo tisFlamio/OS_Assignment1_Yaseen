@@ -7,8 +7,9 @@
 
 
 int main(){
-    //need to create shared memory of type buffer
-    sleep(1);
+
+    sleep(1); //to give producer a headstart
+
     const char* shmPtr = "/sharedMemObject";
 
     //access buffer
@@ -26,7 +27,7 @@ int main(){
 
     
 
-    for(int i = 0; i < 6; ++i){ //don't want to loop this too many times
+    for(int i = 0; i < 6; ++i){ //limiting to 6 times to avoid too much output
 
         sem_wait(&shmp->semFull);
         sem_wait(&shmp->S);

@@ -6,6 +6,8 @@
 #include "structure.hpp"
 int main(){
 
+    //need to create shared memory of type buffer
+
     const char* shmPtr = "/sharedMemObject";
 
     shm_unlink(shmPtr);
@@ -23,7 +25,6 @@ int main(){
     }
 
 
-    //struct buffer *shmp = reinterpret_cast<buffer*>(mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0));
     buffer *shmp = (struct buffer*)mmap(NULL, sizeof(*shmp), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 
 
@@ -62,10 +63,11 @@ int main(){
         int X = rand() % 100;
 
 
-       //store in buffer
+        //store in buffer
         shmp->data[shmp->count] = X;
         std::cout << "Produced: " << shmp->data[shmp->count] << std::endl;
-        shmp->count++;
+        shmp->count++; //increment count (to go to the next element)
+        //if count is 0, we go to 1, and if count is 1, this will still increment, causing issues. This should be addressed in consumer though.
         
         sem_post(&shmp->S); //Signal
         sem_post(&shmp->semFull); //1 more full

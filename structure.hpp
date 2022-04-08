@@ -4,7 +4,7 @@
 #ifndef STRUCTURE_HPP
 #define STRUCTURE_HPP
 
-
+//I might have a couple unncessary directives here
 #include <string.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -20,12 +20,11 @@
 #include <iostream>
 
 struct buffer{
-    int data[2];
-    int toCopy[6];
-    int count = 0;
-    sem_t semFull;
+    int data[2]; //buffer
+    int count = 0; //counter
+    sem_t semFull; 
     sem_t semEmpty;
-    sem_t S;
+    sem_t S; //might not be necessary, as I don't see it making any impact in its current implementation
 };
 
 #endif
